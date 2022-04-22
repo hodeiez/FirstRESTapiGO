@@ -6,9 +6,10 @@ import (
 	"hodei/firstrestapi/modules/message"
 )
 
-func RouterInit() *mux.Router {
+func RouterInit(m message.MessageController) *mux.Router {
 	router := mux.NewRouter()
 	router.HandleFunc("/message", message.GetMessage).Methods("GET")
 	router.HandleFunc("/", hello.Hello)
+	router.HandleFunc("/create", m.Create).Methods("POST")
 	return router
 }
