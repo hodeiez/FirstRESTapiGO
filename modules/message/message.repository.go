@@ -10,6 +10,8 @@ type MessageRepository struct {
 
 func (repo *MessageRepository) Create(title string, text string) Message {
 	var message Message
+	message.Title = title
+	message.Text = text
 	repo.DB.Create(&message)
 	return message
 

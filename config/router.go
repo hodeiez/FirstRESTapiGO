@@ -11,6 +11,6 @@ func RouterInit(m message.MessageController) *mux.Router {
 	router.HandleFunc("/message", message.GetMessage).Methods("GET")
 	router.HandleFunc("/", hello.Hello)
 	router.HandleFunc("/create", m.Create).Methods("POST")
-	router.HandleFunc("/messages", m.GetAll).Methods("Get")
+	router.HandleFunc("/messages", m.GetAll).Methods("GET")
 	return router
 }
