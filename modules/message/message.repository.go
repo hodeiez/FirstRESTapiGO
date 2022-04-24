@@ -8,8 +8,10 @@ type MessageRepository struct {
 	DB *gorm.DB
 }
 
-func (repo *MessageRepository) Create(title string, message string) {
-	repo.DB.Create(&Message{Title: title, Text: message})
+func (repo *MessageRepository) Create(title string, text string) Message {
+	var message Message
+	repo.DB.Create(&message)
+	return message
 
 }
 func (repo *MessageRepository) GetAll() []Message {

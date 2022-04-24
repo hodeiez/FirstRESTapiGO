@@ -8,16 +8,13 @@ import (
 type MessageService struct {
 	MessageRepository
 }
-type CreateMessage struct {
-	Title string `json:"title"`
-	Text  string `json:"text"`
-}
 
-func (s *MessageService) Create(body io.Reader) {
+func (s *MessageService) Create(body io.Reader) Message {
 	decoder := json.NewDecoder(body)
-	var message CreateMessage
+	var message Message
 	decoder.Decode(&message)
 	s.MessageRepository.Create(message.Title, message.Text)
+	return message
 }
 func (s *MessageService) GetAll() []Message {
 
