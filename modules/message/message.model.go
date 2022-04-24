@@ -11,6 +11,6 @@ type HelloObj struct {
 }
 type Message struct {
 	gorm.Model
-	Title string
-	Text  string
+	Title string `json:"title"`
+	Text  string `json:"text"`
 }

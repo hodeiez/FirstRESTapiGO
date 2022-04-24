@@ -19,3 +19,7 @@ func (s *MessageService) Create(body io.Reader) {
 	decoder.Decode(&message)
 	s.MessageRepository.Create(message.Title, message.Text)
 }
+func (s *MessageService) GetAll() []Message {
+
+	return s.MessageRepository.GetAll()
+}

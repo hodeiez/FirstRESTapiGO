@@ -8,9 +8,6 @@ import (
 func Init() {
 	ConnectDB()
 	db.Migrator().CreateTable(&message.Message{})
-	mRepo := message.MessageRepository{DB: db}
-	mServ := message.MessageService{mRepo}
-	mController := message.MessageController{mServ}
-	RouterInit(mController)
+	mController := message.Init(db)
 	http.ListenAndServe(":8080", RouterInit(mController))
 }

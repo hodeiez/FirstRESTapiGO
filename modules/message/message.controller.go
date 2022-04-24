@@ -19,3 +19,8 @@ func (c *MessageController) Create(w http.ResponseWriter, req *http.Request) {
 	c.MessageService.Create(req.Body)
 
 }
+func (c *MessageController) GetAll(w http.ResponseWriter, req *http.Request) {
+
+	json.NewEncoder(w).Encode(c.MessageService.GetAll())
+
+}
